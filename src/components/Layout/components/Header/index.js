@@ -3,6 +3,8 @@ import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import images from '~/assests/images';
 import Tippy from '@tippyjs/react/headless';
+
+import Button from '~/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -36,14 +38,14 @@ const Header = () => {
                             tabIndex="-1"
                             {...attrs}
                         >
-                            <PopperWrapper>
+                            {/* <PopperWrapper>
                                 <h4 className={cx('search-title')}>Accounts</h4>
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
-                            </PopperWrapper>
+                            </PopperWrapper> */}
                         </div>
                     )}
                 >
@@ -64,7 +66,10 @@ const Header = () => {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('actions')}></div>
+                <div className={cx('actions')}>
+                    <Button text>Upload</Button>
+                    <Button primary>Login</Button>
+                </div>
             </div>
         </header>
     );
