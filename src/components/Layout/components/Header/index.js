@@ -26,6 +26,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import {
+    MessageIcon,
+    SearchIcon,
+    InboxIcon,
+    UploadIcon,
+} from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -110,6 +117,7 @@ const Header = () => {
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="tiktok" />
                 </div>
+
                 <HeadlessTippy
                     interactive
                     visible={searchResult.length > 0}
@@ -143,7 +151,7 @@ const Header = () => {
                         icon={faSpinner}
                     /> */}
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <SearchIcon />
                         </button>
                     </div>
                 </HeadlessTippy>
@@ -152,12 +160,31 @@ const Header = () => {
                     {currentUser ? (
                         <>
                             <Tippy
-                                delay={[0, 200]}
+                                delay={[0, 50]}
                                 content="Upload video"
                                 placement="bottom"
                             >
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy
+                                delay={[0, 50]}
+                                content="Message"
+                                placement="bottom"
+                            >
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy
+                                delay={[0, 50]}
+                                content="Ibox"
+                                placement="bottom"
+                            >
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
@@ -172,9 +199,9 @@ const Header = () => {
                         onChange={handleMenuChange}
                     >
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://vaithuhayho.com/wp-content/uploads/2021/04/hinh-anh-avatar-de-thuong-22.jpg"
+                                src="https://files.fullstack.edu.vn/f8-prod/user_avatars/1/623d4b2d95cec.png"
                                 alt="Nguyen Van A"
                             />
                         ) : (
