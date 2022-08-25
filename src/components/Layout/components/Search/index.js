@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useDebounce } from '~/hooks';
 import HeadlessTippy from '@tippyjs/react/headless';
 import AccountItem from '~/components/AccountItem';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -17,16 +18,17 @@ const Search = () => {
     const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
+    const debounced = useDebounce(searchValue, 600);
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
         setLoading(true);
         fetch(
             `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-                searchValue,
+                debounced,
             )}&type=less`,
         )
             .then((response) => response.json())
@@ -37,7 +39,7 @@ const Search = () => {
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounced]);
 
     const handleHideResult = () => {
         setShowResult(false);
