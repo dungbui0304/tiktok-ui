@@ -6,7 +6,7 @@ import images from '~/assests/images';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-import Button from '~/Button';
+import Button from '~/components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
